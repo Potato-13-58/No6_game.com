@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>コネクトボケてサイト</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>ポテトカンパニー®</h1>
+    <div class="controls">
+      <button id="btn-add-image" class="btn">お題画像投稿</button>
+      <button id="btn-boke" class="btn btn-primary">ボケる</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <aside class="sidebar">
+      <div class="sort-box">
+        <h3>表示切替</h3>
+        <label><input type="radio" name="sort" value="time" checked> 投稿順</label>
+        <label><input type="radio" name="sort" value="popular"> 人気順</label>
+      </div>
+    </aside>
+
+    <section class="feed" id="feed">
+      <!-- 画像+テキストの投稿（ボケ）のみ表示 -->
+    </section>
+  </main>
+
+  <!-- お題画像投稿パネル -->
+  <div id="panel-upload" class="panel hidden">
+    <h2>お題画像を投稿</h2>
+    <div class="row">
+      <input id="image-url-input" placeholder="画像のURLを貼る" />
+      <button id="submit-url" class="btn">送信</button>
+    </div>
+    <div class="drag-box" id="drag-box">
+      <p>ここに画像ファイルをドラッグ & ドロップ</p>
+      <p class="hint">またはクリックして選択</p>
+      <input type="file" id="file-input" accept="image/*" class="file-hidden" />
+    </div>
+    <div class="row">
+      <button id="submit-drag" class="btn">送信</button>
+      <button id="close-upload" class="btn btn-ghost">閉じる</button>
+    </div>
+  </div>
+
+  <!-- ボケ投稿パネル -->
+  <div id="panel-boke" class="panel hidden">
+    <h2>ボケる — 画像を選んでキャプション</h2>
+    <div class="row">
+      <button id="btn-random" class="btn">ランダム画像選択</button>
+      <button id="close-boke" class="btn btn-ghost">閉じる</button>
+    </div>
+
+    <div id="images-list" class="images-list"></div>
+
+    <div id="boke-editor" class="boke-editor hidden">
+      <div class="preview">
+        <img id="editor-image" src="" alt="選択画像" />
+      </div>
+      <div class="row">
+        <input id="boke-text" placeholder="ここにボケを書く" />
+        <button id="submit-boke" class="btn btn-primary">送信</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 管理者モード画面 -->
+  <div id="admin-panel" class="panel hidden">
+    <h2>管理者モード — お題画像管理</h2>
+    <div id="admin-list"></div>
+    <button id="close-admin" class="btn btn-ghost">閉じる</button>
+  </div>
+
+  <footer class="footer">
+    <small>保存はブラウザ localStorage に行われます。</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
